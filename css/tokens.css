@@ -1,0 +1,127 @@
+/* ============================================
+   ANDON 4.0 — DESIGN TOKENS
+   Industrial Command Center · Stara Sistemas de Manufatura
+   ============================================ */
+
+:root {
+  /* ---- Marca ---- */
+  --stara-orange: #E85C1C;
+  --stara-orange-light: #FF8A4C;
+  --stara-orange-dim: #5C2A10;
+
+  /* ---- Base escura (modo operação / TV) ---- */
+  --bg-app: #0E1116;
+  --bg-canvas: #11151B;
+  --bg-panel: #161B22;
+  --bg-panel-raised: #1C222B;
+  --bg-panel-hover: #222933;
+  --border-subtle: #262D38;
+  --border-strong: #34404F;
+
+  /* ---- Texto ---- */
+  --text-primary: #F4F5F7;
+  --text-secondary: #9AA4B2;
+  --text-tertiary: #5F6B7A;
+  --text-on-color: #FFFFFF;
+
+  /* ---- Status semânticos ---- */
+  --status-operando: #2E7D32;
+  --status-operando-bg: #15291A;
+  --status-operando-text: #5FD66B;
+
+  --status-parada: #C62828;
+  --status-parada-bg: #2C1416;
+  --status-parada-text: #FF6B6B;
+
+  --status-atencao: #E65100;
+  --status-atencao-bg: #2B1B0C;
+  --status-atencao-text: #FFA94D;
+
+  --status-info: #1565C0;
+  --status-info-bg: #10202F;
+  --status-info-text: #5BA3F0;
+
+  --status-manutencao: #757575;
+  --status-manutencao-bg: #1E2025;
+  --status-manutencao-text: #ABB2BB;
+
+  /* ---- Severidade de alerta (camada extra do projeto) ---- */
+  --sev-critico: #FF3B3B;
+  --sev-critico-bg: linear-gradient(135deg, #2C1012 0%, #1A0C0D 100%);
+  --sev-critico-border: #FF3B3B;
+  --sev-risco: #FFB020;
+  --sev-risco-bg: linear-gradient(135deg, #2B2008 0%, #1C1608 100%);
+  --sev-risco-border: #FFB020;
+  --sev-aviso: #5BA3F0;
+  --sev-aviso-bg: #10202F;
+
+  /* ---- Tipografia ---- */
+  --font-display: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'Roboto Mono', 'JetBrains Mono', monospace;
+
+  /* ---- Espaçamento ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* ---- Raios ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* ---- Sombra ---- */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.35);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.45);
+  --shadow-glow-critico: 0 0 0 1px var(--sev-critico-border), 0 0 24px rgba(255,59,59,0.25);
+  --shadow-glow-risco: 0 0 0 1px var(--sev-risco-border), 0 0 20px rgba(255,176,32,0.18);
+
+  /* ---- Transições ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 150ms;
+  --t-med: 280ms;
+  --t-slow: 480ms;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Defesa global: todo SVG solto (não tipado por componente) fica pequeno por padrão */
+svg { width: 16px; height: 16px; flex-shrink: 0; display: inline-block; vertical-align: middle; }
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--stara-orange-light);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
