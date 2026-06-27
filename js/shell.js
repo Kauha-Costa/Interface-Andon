@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { id: 'relatorios', label: 'Relatórios', icon: 'report', href: '#' },
   { id: 'personalizado', label: 'Personalizado', icon: 'layoutEdit', href: 'personalizado.html', isNew: true },
   { id: 'config', label: 'Configurações', icon: 'settings', href: '#' },
+{ id: 'mobile', label: 'Layout Mobile', icon: 'smartphone', href: 'mobile.html', isNew: true },
 ];
 
 function buildSidebar(activeId) {
