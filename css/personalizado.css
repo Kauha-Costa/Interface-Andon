@@ -251,25 +251,53 @@
   justify-content: center;
 }
 
-.resize-handle {
-  position: absolute;
-  right: 0; bottom: 0;
-  width: 18px; height: 18px;
-  cursor: nwse-resize;
-  display: none;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 3px;
-  color: var(--text-tertiary);
+/* Resize controls reais */
+.resize-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-app);
+  flex-shrink: 0;
 }
-.edit-mode .resize-handle { display: flex; }
-.resize-handle svg { width: 10px; height: 10px; }
+.resize-btn {
+  width: 20px; height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-panel-raised);
+  color: var(--text-secondary);
+  font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+.resize-btn:hover:not(:disabled) { border-color: var(--stara-orange); color: var(--stara-orange-light); }
+.resize-btn:disabled { opacity: 0.3; cursor: default; }
+.resize-size-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+}
 
-/* tamanhos do grid: classes utilitárias de span */
-.cw-w3 { grid-column: span 3; } .cw-w4 { grid-column: span 4; }
-.cw-w6 { grid-column: span 6; } .cw-w8 { grid-column: span 8; }
-.cw-w12 { grid-column: span 12; }
-.cw-h1 { grid-row: span 1; } .cw-h2 { grid-row: span 2; } .cw-h3 { grid-row: span 3; }
+/* SortableJS states */
+.cwidget-ghost { opacity: 0.25; }
+.cwidget-chosen { box-shadow: 0 0 0 2px var(--stara-orange); }
+.cwidget-drag { opacity: 0.9; box-shadow: var(--shadow-lg); }
+
+/* tamanhos do grid: span 1-12 colunas, 1-4 linhas */
+.cw-w1  { grid-column: span 1; }  .cw-w2  { grid-column: span 2; }
+.cw-w3  { grid-column: span 3; }  .cw-w4  { grid-column: span 4; }
+.cw-w5  { grid-column: span 5; }  .cw-w6  { grid-column: span 6; }
+.cw-w7  { grid-column: span 7; }  .cw-w8  { grid-column: span 8; }
+.cw-w9  { grid-column: span 9; }  .cw-w10 { grid-column: span 10; }
+.cw-w11 { grid-column: span 11; } .cw-w12 { grid-column: span 12; }
+.cw-h1  { grid-row: span 1; }     .cw-h2  { grid-row: span 2; }
+.cw-h3  { grid-row: span 3; }     .cw-h4  { grid-row: span 4; }
 
 /* mini conteúdos dentro do widget */
 .mini-kpi { display: flex; flex-direction: column; gap: 4px; }

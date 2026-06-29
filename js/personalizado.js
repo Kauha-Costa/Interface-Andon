@@ -1,55 +1,57 @@
 /* ============================================
    ANDON 4.0 — PERSONALIZADO: widgets configuráveis
+   Drag: SortableJS | Resize: CSS grid span via mouse
    ============================================ */
 
 const WIDGET_CATALOG = [
-  { id: 'oee-geral', area: 'OEE', icon: 'chart', color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)', name: 'OEE Geral (gauge)', type: 'gauge', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'oee-linha', area: 'OEE', icon: 'chart', color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)', name: 'OEE por Linha (barras)', type: 'bars', w: 'cw-w4', h: 'cw-h2' },
-  { id: 'producao-hoje', area: 'Produção', icon: 'bars', color: '#5FD66B', bg: 'rgba(95,214,107,0.12)', name: 'Produção Hoje', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'meta-diaria', area: 'Produção', icon: 'target', color: '#5FD66B', bg: 'rgba(95,214,107,0.12)', name: 'Meta Diária', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'paradas-ativas', area: 'Alertas', icon: 'alert', color: '#FF6B6B', bg: 'rgba(255,107,107,0.12)', name: 'Paradas Ativas', type: 'alertlist', w: 'cw-w4', h: 'cw-h2' },
-  { id: 'perdas-r$', area: 'Alertas', icon: 'alert', color: '#FF6B6B', bg: 'rgba(255,107,107,0.12)', name: 'Perdas Estimadas (R$)', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'qualidade-refugo', area: 'Qualidade', icon: 'shield', color: '#C9A8FF', bg: 'rgba(150,100,255,0.12)', name: 'Índice de Refugo', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'qualidade-linha', area: 'Qualidade', icon: 'shield', color: '#C9A8FF', bg: 'rgba(150,100,255,0.12)', name: 'Qualidade por Linha', type: 'bars', w: 'cw-w4', h: 'cw-h2' },
-  { id: 'manut-os', area: 'Manutenção', icon: 'wrench', color: '#FFA94D', bg: 'rgba(255,169,77,0.12)', name: 'Ordens de Serviço Abertas', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'manut-preventiva', area: 'Manutenção', icon: 'wrench', color: '#FFA94D', bg: 'rgba(255,169,77,0.12)', name: 'Manutenções em Atraso', type: 'alertlist', w: 'cw-w4', h: 'cw-h2' },
-  { id: 'logistica-fila', area: 'Logística', icon: 'truck', color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)', name: 'Fila de Expedição', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'energia-consumo', area: 'Energia', icon: 'bolt', color: '#FFD23F', bg: 'rgba(255,210,63,0.12)', name: 'Consumo de Energia', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'colaboradores', area: 'Equipe', icon: 'users', color: '#5FD66B', bg: 'rgba(95,214,107,0.12)', name: 'Colaboradores Presentes', type: 'kpi', w: 'cw-w3', h: 'cw-h1' },
-  { id: 'mapa-mini', area: 'Produção', icon: 'factory', color: '#FF8A4C', bg: 'rgba(232,92,28,0.12)', name: 'Mini Mapa da Fábrica', type: 'map', w: 'cw-w6', h: 'cw-h2' },
-  { id: 'eventos-feed', area: 'Alertas', icon: 'clock', color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)', name: 'Feed de Eventos', type: 'alertlist', w: 'cw-w4', h: 'cw-h2' },
-  { id: 'ia-insight', area: 'IA', icon: 'ai', color: '#C9A8FF', bg: 'rgba(150,100,255,0.12)', name: 'Insight da IA', type: 'ia', w: 'cw-w4', h: 'cw-h1' },
+  { id: 'oee-geral',       area: 'OEE',        icon: 'chart',   color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)',   name: 'OEE Geral (gauge)',           type: 'gauge',     w: 3, h: 1 },
+  { id: 'oee-linha',       area: 'OEE',        icon: 'chart',   color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)',   name: 'OEE por Linha (barras)',      type: 'bars',      w: 4, h: 2 },
+  { id: 'producao-hoje',   area: 'Produção',   icon: 'bars',    color: '#5FD66B', bg: 'rgba(95,214,107,0.12)',   name: 'Produção Hoje',               type: 'kpi',       w: 3, h: 1 },
+  { id: 'meta-diaria',     area: 'Produção',   icon: 'target',  color: '#5FD66B', bg: 'rgba(95,214,107,0.12)',   name: 'Meta Diária',                 type: 'kpi',       w: 3, h: 1 },
+  { id: 'paradas-ativas',  area: 'Alertas',    icon: 'alert',   color: '#FF6B6B', bg: 'rgba(255,107,107,0.12)', name: 'Paradas Ativas',              type: 'alertlist', w: 4, h: 2 },
+  { id: 'perdas-rs',       area: 'Alertas',    icon: 'alert',   color: '#FF6B6B', bg: 'rgba(255,107,107,0.12)', name: 'Perdas Estimadas (R$)',        type: 'kpi',       w: 3, h: 1 },
+  { id: 'qualidade-refugo',area: 'Qualidade',  icon: 'shield',  color: '#C9A8FF', bg: 'rgba(150,100,255,0.12)', name: 'Índice de Refugo',            type: 'kpi',       w: 3, h: 1 },
+  { id: 'qualidade-linha', area: 'Qualidade',  icon: 'shield',  color: '#C9A8FF', bg: 'rgba(150,100,255,0.12)', name: 'Qualidade por Linha',         type: 'bars',      w: 4, h: 2 },
+  { id: 'manut-os',        area: 'Manutenção', icon: 'wrench',  color: '#FFA94D', bg: 'rgba(255,169,77,0.12)',  name: 'Ordens de Serviço Abertas',   type: 'kpi',       w: 3, h: 1 },
+  { id: 'manut-preventiva',area: 'Manutenção', icon: 'wrench',  color: '#FFA94D', bg: 'rgba(255,169,77,0.12)',  name: 'Manutenções em Atraso',       type: 'alertlist', w: 4, h: 2 },
+  { id: 'logistica-fila',  area: 'Logística',  icon: 'truck',   color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)',  name: 'Fila de Expedição',           type: 'kpi',       w: 3, h: 1 },
+  { id: 'energia-consumo', area: 'Energia',    icon: 'bolt',    color: '#FFD23F', bg: 'rgba(255,210,63,0.12)',  name: 'Consumo de Energia',          type: 'kpi',       w: 3, h: 1 },
+  { id: 'colaboradores',   area: 'Equipe',     icon: 'users',   color: '#5FD66B', bg: 'rgba(95,214,107,0.12)',  name: 'Colaboradores Presentes',     type: 'kpi',       w: 3, h: 1 },
+  { id: 'mapa-mini',       area: 'Produção',   icon: 'factory', color: '#FF8A4C', bg: 'rgba(232,92,28,0.12)',   name: 'Mini Mapa da Fábrica',        type: 'map',       w: 6, h: 2 },
+  { id: 'eventos-feed',    area: 'Alertas',    icon: 'clock',   color: '#5BA3F0', bg: 'rgba(91,163,240,0.12)',  name: 'Feed de Eventos',             type: 'alertlist', w: 4, h: 2 },
+  { id: 'ia-insight',      area: 'IA',         icon: 'ai',      color: '#C9A8FF', bg: 'rgba(150,100,255,0.12)', name: 'Insight da IA',               type: 'ia',        w: 4, h: 1 },
 ];
 
 const AREAS = ['Todos', 'Produção', 'OEE', 'Alertas', 'Qualidade', 'Manutenção', 'Logística', 'Energia', 'Equipe', 'IA'];
 
-// Layout inicial pré-montado (exemplo de "o que o supervisor já configurou")
+// Layout inicial
 let currentLayout = [
-  { catalogId: 'oee-geral', uid: 'w1' },
-  { catalogId: 'producao-hoje', uid: 'w2' },
-  { catalogId: 'perdas-r$', uid: 'w3' },
-  { catalogId: 'paradas-ativas', uid: 'w4' },
-  { catalogId: 'oee-linha', uid: 'w5' },
-  { catalogId: 'ia-insight', uid: 'w6' },
-  { catalogId: 'qualidade-linha', uid: 'w7' },
+  { catalogId: 'oee-geral',      uid: 'w1', w: 3, h: 1 },
+  { catalogId: 'producao-hoje',  uid: 'w2', w: 3, h: 1 },
+  { catalogId: 'perdas-rs',      uid: 'w3', w: 3, h: 1 },
+  { catalogId: 'paradas-ativas', uid: 'w4', w: 4, h: 2 },
+  { catalogId: 'oee-linha',      uid: 'w5', w: 4, h: 2 },
+  { catalogId: 'ia-insight',     uid: 'w6', w: 4, h: 1 },
+  { catalogId: 'qualidade-linha',uid: 'w7', w: 4, h: 2 },
 ];
 
 let editMode = false;
 let uidCounter = 100;
+let sortableInstance = null;
 
 function findCatalog(id) { return WIDGET_CATALOG.find(w => w.id === id); }
 
 function renderMiniContent(cat) {
   if (cat.type === 'kpi') {
     const sample = {
-      'producao-hoje': ['1.256', 'unidades · meta 1.600'],
-      'meta-diaria': ['78%', 'da meta diária atingida'],
-      'perdas-r$': ['R$ 11.4k', 'perdidos no turno'],
+      'producao-hoje':    ['1.256', 'unidades · meta 1.600'],
+      'meta-diaria':      ['78%',   'da meta diária atingida'],
+      'perdas-rs':        ['R$ 11.4k', 'perdidos no turno'],
       'qualidade-refugo': ['2,3%', 'dentro do limite de 3%'],
-      'manut-os': ['7', 'ordens abertas'],
-      'logistica-fila': ['12', 'paletes aguardando'],
-      'energia-consumo': ['238 kWh', 'dentro do esperado'],
-      'colaboradores': ['1.248', 'presentes em 7 turnos'],
+      'manut-os':         ['7', 'ordens abertas'],
+      'logistica-fila':   ['12', 'paletes aguardando'],
+      'energia-consumo':  ['238 kWh', 'dentro do esperado'],
+      'colaboradores':    ['1.248', 'presentes em 7 turnos'],
     }[cat.id] || ['—', ''];
     return `<div class="mini-kpi"><span class="mini-kpi-value" style="color:${cat.color}">${sample[0]}</span><span class="mini-kpi-label">${sample[1]}</span></div>`;
   }
@@ -67,7 +69,7 @@ function renderMiniContent(cat) {
     const items = [
       { t: 'Linha 03 — Parada não programada', d: '14:31 · falha no motor' },
       { t: 'Linha 07 — Refugo acima do limite', d: '14:29 · qualidade' },
-      { t: 'Linha 12 — Manutenção em atraso', d: '14:27 · 3 dias' },
+      { t: 'Linha 12 — Manutenção em atraso',  d: '14:27 · 3 dias' },
     ];
     return `<div>${items.map(i => `<div class="mini-alert-item"><strong>${i.t}</strong><span>${i.d}</span></div>`).join('')}</div>`;
   }
@@ -93,19 +95,34 @@ function renderMiniContent(cat) {
 function renderCWidget(item) {
   const cat = findCatalog(item.catalogId);
   if (!cat) return '';
+  const w = item.w || cat.w;
+  const h = item.h || cat.h;
+
+  const sizeLabel = `${w}×${h}`;
+  const resizeBtns = editMode ? `
+    <div class="resize-controls" data-uid="${item.uid}">
+      <button class="resize-btn" data-action="w-" title="Menos largo" ${w <= 2 ? 'disabled' : ''}>◀</button>
+      <span class="resize-size-label">${sizeLabel}</span>
+      <button class="resize-btn" data-action="w+" title="Mais largo" ${w >= 12 ? 'disabled' : ''}>▶</button>
+      <button class="resize-btn" data-action="h-" title="Menos alto" ${h <= 1 ? 'disabled' : ''}>▲</button>
+      <button class="resize-btn" data-action="h+" title="Mais alto" ${h >= 4 ? 'disabled' : ''}>▼</button>
+    </div>
+  ` : '';
+
   return `
-    <div class="cwidget ${cat.w} ${cat.h}" data-uid="${item.uid}" draggable="${editMode}">
+    <div class="cwidget cw-w${w} cw-h${h}" data-uid="${item.uid}" data-w="${w}" data-h="${h}">
       <div class="cwidget-head">
         <span class="cwidget-title">${icon(cat.icon)} ${cat.name}</span>
         <div class="cwidget-controls">
-          ${editMode ? `
-            <button class="drag-handle" title="Arrastar">${icon('drag')}</button>
-            <button class="danger" data-remove="${item.uid}" title="Remover">${icon('trash')}</button>
-          ` : `<button title="Expandir">${icon('expand')}</button>`}
+          ${editMode
+            ? `<span class="drag-handle" title="Arrastar">${icon('drag')}</span>
+               <button class="danger" data-remove="${item.uid}" title="Remover">${icon('trash')}</button>`
+            : `<button title="Expandir">${icon('expand')}</button>`
+          }
         </div>
       </div>
       <div class="cwidget-body">${renderMiniContent(cat)}</div>
-      <div class="resize-handle">${icon('expand')}</div>
+      ${resizeBtns}
     </div>
   `;
 }
@@ -114,17 +131,13 @@ function renderCatalogList(filterArea = 'Todos', search = '') {
   let items = WIDGET_CATALOG;
   if (filterArea !== 'Todos') items = items.filter(w => w.area === filterArea);
   if (search) items = items.filter(w => w.name.toLowerCase().includes(search.toLowerCase()));
-
-  if (!items.length) {
-    return `<div style="text-align:center;color:var(--text-tertiary);font-size:12.5px;padding:40px 0;">Nenhum widget encontrado.</div>`;
-  }
-
+  if (!items.length) return `<div style="text-align:center;color:var(--text-tertiary);font-size:12.5px;padding:40px 0;">Nenhum widget encontrado.</div>`;
   return items.map(cat => `
-    <div class="widget-option" draggable="true" data-catalog-id="${cat.id}">
+    <div class="widget-option">
       <div class="widget-option-icon" style="background:${cat.bg};color:${cat.color}">${icon(cat.icon)}</div>
       <div class="widget-option-body">
         <div class="widget-option-name">${cat.name}</div>
-        <div class="widget-option-area">${cat.area}</div>
+        <div class="widget-option-area">${cat.area} · ${cat.w}×${cat.h}</div>
       </div>
       <button class="widget-option-add" data-add-id="${cat.id}">${icon('plus')}</button>
     </div>
@@ -165,7 +178,7 @@ function renderPersonalizado() {
         <div class="catalog-head">
           <div>
             <div class="catalog-title">Adicionar Widget</div>
-            <div class="catalog-sub">Arraste para o grid ou clique em + para adicionar</div>
+            <div class="catalog-sub">Clique em + para adicionar ao seu painel</div>
           </div>
           <button class="catalog-close" id="catalog-close">${icon('x')}</button>
         </div>
@@ -181,74 +194,118 @@ function renderPersonalizado() {
   `;
 }
 
-function setEditMode(on) {
-  editMode = on;
+/* ---------- sincroniza ordem do DOM → currentLayout ---------- */
+function syncLayoutFromDOM() {
   const grid = document.getElementById('custom-grid');
-  const indicator = document.getElementById('mode-indicator');
-  const toggleBtn = document.getElementById('btn-toggle-edit');
-  const addBtn = document.getElementById('btn-add-widget');
+  if (!grid) return;
+  const newOrder = [];
+  grid.querySelectorAll('.cwidget[data-uid]').forEach(el => {
+    const uid = el.getAttribute('data-uid');
+    const existing = currentLayout.find(i => i.uid === uid);
+    if (existing) newOrder.push(existing);
+  });
+  currentLayout = newOrder;
+}
+
+/* ---------- re-renderiza o grid sem recriar o DOM inteiro ---------- */
+function refreshGrid() {
+  const grid = document.getElementById('custom-grid');
+  if (!grid) return;
+
+  // Destroy sortable before re-render
+  if (sortableInstance) { sortableInstance.destroy(); sortableInstance = null; }
+
+  grid.innerHTML = currentLayout.map(renderCWidget).join('') +
+    (editMode ? `<button class="add-tile" id="add-tile">${icon('plus')} Adicionar widget</button>` : '');
 
   grid.classList.toggle('edit-mode', editMode);
-  grid.innerHTML = currentLayout.map(renderCWidget).join('') + (editMode ? `<button class="add-tile" id="add-tile">${icon('plus')} Adicionar widget</button>` : '');
-
-  indicator.innerHTML = editMode ? `${icon('layoutEdit')} Modo edição` : `${icon('user')} Modo visualização`;
-  toggleBtn.innerHTML = editMode ? `${icon('check')} Concluir edição` : `${icon('layoutEdit')} Editar layout`;
-  addBtn.style.display = editMode ? 'inline-flex' : 'none';
 
   attachGridEvents();
 }
 
+function setEditMode(on) {
+  editMode = on;
+  const indicator = document.getElementById('mode-indicator');
+  const toggleBtn = document.getElementById('btn-toggle-edit');
+  const addBtn    = document.getElementById('btn-add-widget');
+
+  if (indicator) indicator.innerHTML = editMode ? `${icon('layoutEdit')} Modo edição` : `${icon('user')} Modo visualização`;
+  if (toggleBtn) toggleBtn.innerHTML = editMode ? `${icon('check')} Concluir edição` : `${icon('layoutEdit')} Editar layout`;
+  if (addBtn) addBtn.style.display = editMode ? 'inline-flex' : 'none';
+
+  refreshGrid();
+}
+
 function attachGridEvents() {
-  document.querySelectorAll('[data-remove]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  const grid = document.getElementById('custom-grid');
+  if (!grid) return;
+
+  /* --- Remove widget --- */
+  grid.querySelectorAll('[data-remove]').forEach(btn => {
+    btn.addEventListener('click', e => {
       e.stopPropagation();
       const uid = btn.getAttribute('data-remove');
       currentLayout = currentLayout.filter(i => i.uid !== uid);
-      setEditMode(true);
+      refreshGrid();
     });
   });
 
+  /* --- Add tile button --- */
   const addTile = document.getElementById('add-tile');
   if (addTile) addTile.addEventListener('click', openCatalog);
 
-  // Drag and drop nativo entre cwidgets (reordenar)
-  if (!editMode) return;
-  const grid = document.getElementById('custom-grid');
-  let dragSrc = null;
+  /* --- Resize buttons --- */
+  grid.querySelectorAll('.resize-controls').forEach(ctrl => {
+    const uid = ctrl.getAttribute('data-uid');
+    ctrl.querySelectorAll('.resize-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const action = btn.getAttribute('data-action');
+        const item = currentLayout.find(i => i.uid === uid);
+        if (!item) return;
+        if (action === 'w+') item.w = Math.min(12, (item.w || 3) + 1);
+        if (action === 'w-') item.w = Math.max(2,  (item.w || 3) - 1);
+        if (action === 'h+') item.h = Math.min(4,  (item.h || 1) + 1);
+        if (action === 'h-') item.h = Math.max(1,  (item.h || 1) - 1);
+        refreshGrid();
+      });
+    });
+  });
 
-  grid.querySelectorAll('.cwidget').forEach(el => {
-    el.addEventListener('dragstart', (e) => {
-      dragSrc = el;
-      el.classList.add('dragging');
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    el.addEventListener('dragend', () => el.classList.remove('dragging'));
-    el.addEventListener('dragover', (e) => e.preventDefault());
-    el.addEventListener('drop', (e) => {
-      e.preventDefault();
-      if (!dragSrc || dragSrc === el) return;
-      const srcUid = dragSrc.getAttribute('data-uid');
-      const tgtUid = el.getAttribute('data-uid');
-      const srcIdx = currentLayout.findIndex(i => i.uid === srcUid);
-      const tgtIdx = currentLayout.findIndex(i => i.uid === tgtUid);
-      const [moved] = currentLayout.splice(srcIdx, 1);
-      currentLayout.splice(tgtIdx, 0, moved);
-      setEditMode(true);
-    });
+  /* --- SortableJS drag (apenas no modo edição) --- */
+  if (!editMode) return;
+
+  sortableInstance = Sortable.create(grid, {
+    handle: '.drag-handle',
+    animation: 180,
+    ghostClass: 'cwidget-ghost',
+    chosenClass: 'cwidget-chosen',
+    dragClass: 'cwidget-drag',
+    filter: '.add-tile',
+    onEnd() {
+      syncLayoutFromDOM();
+    },
   });
 }
 
-function openCatalog() {
-  document.getElementById('catalog-overlay').classList.add('open');
-}
-function closeCatalog() {
-  document.getElementById('catalog-overlay').classList.remove('open');
-}
+function openCatalog()  { document.getElementById('catalog-overlay').classList.add('open'); }
+function closeCatalog() { document.getElementById('catalog-overlay').classList.remove('open'); }
 
 function addWidgetToLayout(catalogId) {
+  const cat = findCatalog(catalogId);
+  if (!cat) return;
   uidCounter++;
-  currentLayout.push({ catalogId, uid: 'w' + uidCounter });
-  setEditMode(true);
+  currentLayout.push({ catalogId, uid: 'w' + uidCounter, w: cat.w, h: cat.h });
+  refreshGrid();
+}
+
+function attachCatalogAddButtons() {
+  document.querySelectorAll('[data-add-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      addWidgetToLayout(btn.getAttribute('data-add-id'));
+      closeCatalog();
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -257,17 +314,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-toggle-edit').addEventListener('click', () => setEditMode(!editMode));
   document.getElementById('btn-add-widget').addEventListener('click', openCatalog);
   document.getElementById('catalog-close').addEventListener('click', closeCatalog);
-  document.getElementById('catalog-overlay').addEventListener('click', (e) => {
+  document.getElementById('catalog-overlay').addEventListener('click', e => {
     if (e.target.id === 'catalog-overlay') closeCatalog();
   });
 
-  document.getElementById('catalog-search').addEventListener('input', (e) => {
+  document.getElementById('catalog-search').addEventListener('input', e => {
     const activeArea = document.querySelector('.area-chip.active').getAttribute('data-area');
     document.getElementById('catalog-list').innerHTML = renderCatalogList(activeArea, e.target.value);
     attachCatalogAddButtons();
   });
 
-  document.getElementById('catalog-areas').addEventListener('click', (e) => {
+  document.getElementById('catalog-areas').addEventListener('click', e => {
     const chip = e.target.closest('.area-chip');
     if (!chip) return;
     document.querySelectorAll('.area-chip').forEach(c => c.classList.remove('active'));
@@ -277,15 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
     attachCatalogAddButtons();
   });
 
-  function attachCatalogAddButtons() {
-    document.querySelectorAll('[data-add-id]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        addWidgetToLayout(btn.getAttribute('data-add-id'));
-        closeCatalog();
-      });
-    });
-  }
   attachCatalogAddButtons();
-
   attachGridEvents();
 });
